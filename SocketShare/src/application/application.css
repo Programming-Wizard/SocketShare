@@ -1,1 +1,11 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.send-button:hover {
+    -fx-opacity: 0.3;
+}
+.select-button:hover{
+	-fx-opacity: 0.6;
+}
+
+.send-from-device:hover{
+		-fx-opacity: 0.42;
+}

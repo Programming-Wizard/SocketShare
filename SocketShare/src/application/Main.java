@@ -12,28 +12,31 @@ import java.nio.file.Files;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 	
 	File selectedFile;
 	String fileName;
+	String filePath;
 	
 	@Override
 	public void start(Stage primaryStage) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainWindow.fxml"));
-		FileChooser fileChooser = new FileChooser();
 		try {
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Socket Share");
 			root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);			
+			primaryStage.setResizable(false);
 			primaryStage.show();
 			
 			primaryStage.getScene().getAccelerators().put(KeyCombination.keyCombination("CTRL+W"), new Runnable() {
@@ -48,22 +51,66 @@ public class Main extends Application {
 		}
 		MainWindowController controller = loader.getController();
 		controller.getChooseFileButton().setOnAction(event->{
-			openFileChooserDialogBox(primaryStage, fileChooser, loader);
+			//Send file from computer button click listener
+			openSendFileWindow(controller);
+			controller.getChooseFileButton().setDisable(true);
 		});
 		
-		controller.getSendButton().setOnAction(event->{
-			sendFileToServer();
-			System.out.println("send button clicked");
-		});
-
+//		controller.getSendButton().setOnAction(event->{
+//			sendFileToServer();
+//			System.out.println("send button clicked");
+//		});
+		
 	}
 	
-	private void openFileChooserDialogBox(Stage PrimaryStage, FileChooser fileChooser, FXMLLoader loader) {
-		MainWindowController controller = loader.getController();
-		selectedFile = fileChooser.showOpenDialog(PrimaryStage);
+	private void openFileChooserDialogBox(Stage stage, FileChooser fileChooser, FXMLLoader loader) {
+		SendFileWindowController controller = loader.getController();
+		selectedFile = fileChooser.showOpenDialog(stage);
 		if(selectedFile != null) {
 			fileName = selectedFile.getName();
+			filePath = selectedFile.getAbsolutePath();
 			controller.getFileNameText().setText(fileName);
+			controller.getFilePathText().setText(filePath);
+			controller.getFileReady().setVisible(true);
+			controller.getServerReady().setVisible(true);
+			controller.getSendButton().setVisible(true);
+		}
+	}
+	
+	private void openSendFileWindow(MainWindowController controller) {
+		FXMLLoader SendFileLoader = new FXMLLoader(getClass().getResource("/SendFileWindow.fxml"));
+		FileChooser fileChooser = new FileChooser();
+		try {
+			Stage SendFileStage = new Stage();
+			Parent SendFileRoot = SendFileLoader.load();
+			Scene SendFileScene = new Scene(SendFileRoot);
+			
+			SendFileStage.setScene(SendFileScene);
+			SendFileStage.setTitle("Send File");
+			SendFileStage.setResizable(false); 
+			SendFileStage.show();
+	        SendFileStage.setOnHidden(event->{
+	        	controller.getChooseFileButton().setDisable(false);
+	        });
+			SendFileStage.getScene().getAccelerators().put(KeyCombination.keyCombination("CTRL+W"), new Runnable() {
+				@Override
+				public void run() {
+					controller.getChooseFileButton().setDisable(false);
+					SendFileStage.close();
+				}
+			});
+			
+			SendFileWindowController SendFileController = SendFileLoader.getController();
+			
+			SendFileController.getSelectFileButton().setOnAction(event->{
+				openFileChooserDialogBox(SendFileStage, fileChooser, SendFileLoader);
+			});
+			
+			SendFileController.getSendButton().setOnAction(event->{
+				sendFileToServer();
+			});
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 	
@@ -76,7 +123,7 @@ public class Main extends Application {
 				String[] serverIPs = {ip.getZorinIP(),ip.getXubuntuIP()};
 		        int port = 6961;
 //		        for (String serverIP : serverIPs) {
-		            InetSocketAddress serverAddress = new InetSocketAddress(serverIPs[0], port);
+		            InetSocketAddress serverAddress = new InetSocketAddress(serverIPs[2], port);
 
 		            try {
 		                File fileToSend = selectedFile;

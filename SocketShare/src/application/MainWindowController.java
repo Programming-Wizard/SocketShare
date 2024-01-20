@@ -14,10 +14,6 @@ public class MainWindowController implements Initializable{
 	
 	@FXML
 		private Button chooseFileButton;
-	@FXML
-	private Button sendButton;
-	@FXML
-	private Text fileNameText;
 	
 	
 	@Override
@@ -25,11 +21,5 @@ public class MainWindowController implements Initializable{
 	}
 	public Button getChooseFileButton() {
 		return chooseFileButton;
-	}	
-	public Text getFileNameText() {
-		return fileNameText;
-	}
-	public Button getSendButton() {
-		return sendButton;
 	}	
 }
