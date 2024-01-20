@@ -73,7 +73,7 @@ public class Main extends Application {
 			@Override
 			protected Void call() throws Exception {
 				IPS ip = new IPS();
-				String[] serverIPs = {ip.getZorinIP(),ip.getXubuntuIP(), "192.168.1.100"};
+				String[] serverIPs = {ip.getZorinIP(),ip.getXubuntuIP()};
 		        int port = 6961;
 //		        for (String serverIP : serverIPs) {
 		            InetSocketAddress serverAddress = new InetSocketAddress(serverIPs[0], port);
