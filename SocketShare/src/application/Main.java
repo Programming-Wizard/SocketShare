@@ -1,9 +1,7 @@
 package application;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.InetSocketAddress;
@@ -35,7 +33,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Socket Share");
 			root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
+			primaryStage.setScene(scene);			
 			primaryStage.show();
 			
 			primaryStage.getScene().getAccelerators().put(KeyCombination.keyCombination("CTRL+W"), new Runnable() {
@@ -64,13 +62,8 @@ public class Main extends Application {
 		MainWindowController controller = loader.getController();
 		selectedFile = fileChooser.showOpenDialog(PrimaryStage);
 		if(selectedFile != null) {
-			String filenameString = selectedFile.getAbsolutePath();
 			fileName = selectedFile.getName();
 			controller.getFileNameText().setText(fileName);
-			
-			filenameString = filenameString.replaceAll("\\\\", "/");
-			
-			System.out.println("Selected File : " + filenameString);
 		}
 	}
 	
@@ -80,9 +73,8 @@ public class Main extends Application {
 			@Override
 			protected Void call() throws Exception {
 				IPS ip = new IPS();
-				String[] serverIPs = {ip.getZorinIP(),ip.getXubuntuIP()};
+				String[] serverIPs = {ip.getZorinIP(),ip.getXubuntuIP(), "192.168.1.100"};
 		        int port = 6961;
-
 //		        for (String serverIP : serverIPs) {
 		            InetSocketAddress serverAddress = new InetSocketAddress(serverIPs[0], port);
 
@@ -94,23 +86,20 @@ public class Main extends Application {
 		                try {
 		                    socket.connect(serverAddress);
 		                } catch (IOException e) {
-		                    // If the connection fails, move to the next server address
 		                    System.err.println("Failed to connect to " + serverAddress);
 		                    e.printStackTrace();
 //		                    continue;
 		                }
 
-		                BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//		                BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		                PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
+		                output.println(fileName);
 		                output.flush();
 
 		                OutputStream outputStream = socket.getOutputStream();
-		                outputStream.write(fileBytes, 0, fileBytes.length);
+		                outputStream.write(fileBytes);
 		                outputStream.flush();
-		                System.out.println("file sent succesfully");
 
-//		                String response = input.readLine();
-//		                System.out.println("Server response: " + response);
 		                System.out.println("Connected to: " + serverAddress);
 
 		                socket.close();
@@ -120,6 +109,7 @@ public class Main extends Application {
 		            } catch (IOException e) {
 		                e.printStackTrace();
 		            }
+//		        }
 				return null;
 			}};
 			Thread sendTaskThread = new Thread(SendTask);
