@@ -20,7 +20,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button layoutX="242.0" layoutY="141.0" mnemonicParsing="false" opacity="0.0" prefHeight="258.0" prefWidth="183.0" style="-fx-background-color: black;" styleClass="send-from-device" stylesheets="@application/application.css" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="425.0" AnchorPane.topAnchor="141.0">
+      <Button fx:id="CreateAndSendButton" layoutX="242.0" layoutY="141.0" mnemonicParsing="false" opacity="0.0" prefHeight="258.0" prefWidth="183.0" style="-fx-background-color: black;" styleClass="send-from-device" stylesheets="@application/application.css" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="425.0" AnchorPane.topAnchor="141.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>

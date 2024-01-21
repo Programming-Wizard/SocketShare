@@ -28,8 +28,6 @@ public class SendFileWindowController implements Initializable {
 		FileReady.setVisible(false);
 		ServerReady.setVisible(false);
 		sendButton.setVisible(false);
-		
-		
 	}
 	public Button getSelectFileButton() {
 		return selectFileButton;

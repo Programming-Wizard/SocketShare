@@ -123,7 +123,7 @@ public class Main extends Application {
 				String[] serverIPs = {ip.getZorinIP(),ip.getXubuntuIP()};
 		        int port = 6961;
 //		        for (String serverIP : serverIPs) {
-		            InetSocketAddress serverAddress = new InetSocketAddress(serverIPs[2], port);
+		            InetSocketAddress serverAddress = new InetSocketAddress(serverIPs[0], port);
 
 		            try {
 		                File fileToSend = selectedFile;
