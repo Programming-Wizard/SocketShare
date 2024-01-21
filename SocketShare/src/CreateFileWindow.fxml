@@ -1,29 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1700.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1700.0" style="-fx-background-color: rgb(23, 23, 23);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CreatefileWindowController">
    <top>
-      <AnchorPane prefHeight="73.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="73.0" prefWidth="600.0" style="-fx-background-color: rgb(23, 23, 23);" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="282.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File Name :">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <effect>
+                  <Glow level="0.97" />
+               </effect>
+            </Text>
+            <TextField fx:id="fileName" alignment="CENTER" layoutX="469.0" layoutY="26.0" prefHeight="25.0" prefWidth="774.0" style="-fx-border-radius: 20; -fx-background-color: rgb(23, 23, 23); -fx-border-color: white; -fx-text-fill: white;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="469.0" AnchorPane.rightAnchor="457.0" AnchorPane.topAnchor="26.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+            <Button fx:id="SendButton" layoutX="1269.0" layoutY="24.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: linear-gradient(to left, #ff7f50, #6a5acd); -fx-background-radius: 20px;" styleClass="send-button" stylesheets="@application/application.css" text="Send" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="24.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
    </top>
    <right>
-      <AnchorPane prefHeight="677.0" prefWidth="500.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="677.0" prefWidth="500.0" style="-fx-background-color: rgb(23, 23, 23);" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="231.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="382.0">
+               <image>
+                  <Image url="@../res/doodle1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="188.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true" rotate="154.3" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="172.0">
+               <image>
+                  <Image url="@../res/doodle3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="34.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="34.0">
+               <image>
+                  <Image url="@../res/doodle1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="273.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true" rotate="-142.4" AnchorPane.bottomAnchor="35.0">
+               <image>
+                  <Image url="@../res/doodle3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="302.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" rotate="105.3" AnchorPane.bottomAnchor="199.0">
+               <image>
+                  <Image url="@../res/doodle3.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
    </right>
    <left>
-      <AnchorPane prefHeight="677.0" prefWidth="500.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="677.0" prefWidth="500.0" style="-fx-background-color: rgb(23, 23, 23);" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="47.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="476.0" AnchorPane.leftAnchor="47.0">
+               <image>
+                  <Image url="@../res/doodle1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="279.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="161.0">
+               <image>
+                  <Image url="@../res/doodle3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="91.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="55.0">
+               <image>
+                  <Image url="@../res/doodle1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="122.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true" rotate="-45.0" AnchorPane.bottomAnchor="296.0">
+               <image>
+                  <Image url="@../res/doodle3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="170.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="170.0">
+               <image>
+                  <Image url="@../res/doodle1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="274.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="101.7660140991211" AnchorPane.topAnchor="134.0">
+               <image>
+                  <Image url="@../res/doodle3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="40.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="161.0">
+               <image>
+                  <Image url="@../res/doodle1.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
    </left>
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="Pane" stylesheets="@application/application.css" BorderPane.alignment="CENTER">
          <center>
-            <TextArea prefHeight="668.0" prefWidth="522.0" stylesheets="@application/application.css" wrapText="true" BorderPane.alignment="CENTER">
+            <TextArea fx:id="FileContent" prefHeight="616.0" prefWidth="522.0" promptText="Start Writng Here . . ." stylesheets="@application/application.css" wrapText="true" BorderPane.alignment="CENTER">
                <styleClass>
                   <String fx:value="text-area" />
                   <String fx:value="textarea" />
                </styleClass>
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin>
             </TextArea>
          </center>
          <left>
