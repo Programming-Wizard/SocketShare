@@ -12,17 +12,17 @@
    <children>
       <ImageView fitHeight="550.0" fitWidth="930.0" pickOnBounds="true">
          <image>
-            <Image url="@../res/SendFromComp.png" />
+            <Image url="@SendFromComp.png" />
          </image>
       </ImageView>
       <ImageView fx:id="FileReady" fitHeight="100.0" fitWidth="120.0" layoutX="77.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../res/FileIsReady.png" />
+            <Image url="@FileIsReady.png" />
          </image>
       </ImageView>
       <ImageView fx:id="ServerReady" fitHeight="100.0" fitWidth="120.0" layoutX="678.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../res/ServerReady.png" />
+            <Image url="@ServerReady.png" />
          </image></ImageView>
       <Button fx:id="sendButton" layoutX="372.0" layoutY="405.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="192.0" style="-fx-background-radius: 25; -fx-background-insets: 10; -fx-background-color: linear-gradient(to left, #ff7f50, #6a5acd);" styleClass="send-button" stylesheets="@application/application.css" text="Send">
          <font>

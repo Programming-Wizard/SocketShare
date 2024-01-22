@@ -13,13 +13,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="482.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainWindowController">
    <children>
-      <ImageView fitHeight="650.0" fitWidth="850.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.35443115234375" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <image>
-            <Image url="@../res/mainWindowBackground.png" />
-         </image>
+      <ImageView fx:id="background" fitHeight="650.0" fitWidth="850.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.35443115234375" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
+         <image>
+            <Image url="@mainWindowBackground.png" />
+         </image>
       </ImageView>
       <Button fx:id="chooseFileButton" layoutX="425.0" layoutY="141.0" mnemonicParsing="false" opacity="0.0" prefHeight="258.0" prefWidth="189.0" style="-fx-background-color: black;" styleClass="send-from-device" stylesheets="@application/application.css" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="141.0">
          <cursor>

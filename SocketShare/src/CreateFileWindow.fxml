@@ -43,27 +43,27 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="231.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="382.0">
                <image>
-                  <Image url="@../res/doodle1.png" />
+                  <Image url="@doodle1.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="188.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true" rotate="154.3" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="172.0">
                <image>
-                  <Image url="@../res/doodle3.png" />
+                  <Image url="@doodle3.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="34.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="34.0">
                <image>
-                  <Image url="@../res/doodle1.png" />
+                  <Image url="@doodle1.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="273.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true" rotate="-142.4" AnchorPane.bottomAnchor="35.0">
                <image>
-                  <Image url="@../res/doodle3.png" />
+                  <Image url="@doodle3.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="302.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" rotate="105.3" AnchorPane.bottomAnchor="199.0">
                <image>
-                  <Image url="@../res/doodle3.png" />
+                  <Image url="@doodle3.png" />
                </image>
             </ImageView>
             <Label fx:id="errorLabel" alignment="CENTER" layoutX="37.0" layoutY="576.0" prefHeight="33.0" prefWidth="500.0" style="-fx-background-color: rgba(225,225,225,0.5); -fx-background-radius: 15;" text="check the file name or the content to sent is empty" textFill="WHITE" AnchorPane.bottomAnchor="49.0">
@@ -88,37 +88,37 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="47.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="476.0" AnchorPane.leftAnchor="47.0">
                <image>
-                  <Image url="@../res/doodle1.png" />
+                  <Image url="@doodle1.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="279.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="161.0">
                <image>
-                  <Image url="@../res/doodle3.png" />
+                  <Image url="@doodle3.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="91.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="55.0">
                <image>
-                  <Image url="@../res/doodle1.png" />
+                  <Image url="@doodle1.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="122.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true" rotate="-45.0" AnchorPane.bottomAnchor="296.0">
                <image>
-                  <Image url="@../res/doodle3.png" />
+                  <Image url="@doodle3.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="170.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="170.0">
                <image>
-                  <Image url="@../res/doodle1.png" />
+                  <Image url="@doodle1.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="274.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="101.7660140991211" AnchorPane.topAnchor="134.0">
                <image>
-                  <Image url="@../res/doodle3.png" />
+                  <Image url="@doodle3.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="40.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="161.0">
                <image>
-                  <Image url="@../res/doodle1.png" />
+                  <Image url="@doodle1.png" />
                </image>
             </ImageView>
          </children></AnchorPane>

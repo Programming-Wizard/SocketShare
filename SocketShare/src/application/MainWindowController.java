@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -44,6 +45,8 @@ public class MainWindowController implements Initializable {
 	Text crossMark;
 	@FXML
 	Label errorLabel;
+	@FXML
+	ImageView background;
 //	private String ipv4Regex = "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])";
 	IPS ip = new IPS();
 	private String SendToIp = "";
@@ -51,6 +54,8 @@ public class MainWindowController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+//		Image mainWindowBackground = new Image("/mainWindowBackground.png");
+//		background.setImage(mainWindowBackground);
 		errorLabel.setOpacity(0);
 		crossMark.setOpacity(0);
 		
