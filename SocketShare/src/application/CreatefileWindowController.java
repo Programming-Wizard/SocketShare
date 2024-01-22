@@ -18,8 +18,11 @@ public class CreatefileWindowController implements Initializable{
 	@FXML
 	private TextArea FileContent;
 
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+
+			
 	}
 	public TextArea getFileContent() {
 		return FileContent;

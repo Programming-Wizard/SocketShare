@@ -11,12 +11,12 @@
 }
 
 .textarea{
-	-fx-font-size: 18px;
+	-fx-font-size: 18.0px;
 	-fx-font-smoothing-type: led;
 	-fx-font-family: Times;	
 	-fx-background-color: #000000, #000000;
-    -fx-background-radius: 15;
-    -fx-border-radius: 15;
+    -fx-background-radius: 15.0;
+    -fx-border-radius: 15.0;
     -fx-text-fill: white;
 		
 }
@@ -33,7 +33,29 @@
 .Pane{
     -fx-background-color: transparent;
         -fx-border-color: linear-gradient(to bottom, #ff7f50, #6a5acd);
-            -fx-border-radius: 15;
-                -fx-background-radius: 15;
+            -fx-border-radius: 15.0;
+                -fx-background-radius: 15.0;
                 	-fx-background-color: #000000, #000000;
+}
+
+.split-menu-button > .label {
+
+  	 -fx-text-fill: -fx-text-base-color;
+
+	/*    -fx-background-color: -fx-inner-border, -fx-body-color;  */
+	-fx-background-color: rgba(225.0,225.0,225.0,0.5);
+
+    -fx-background-insets: 1.0 0.0 1.0 1.0, 2.0 1.0 2.0 2.0;
+
+    -fx-background-radius: 2.0 0.0 0.0 2.0, 1.0 0.0 0.0 1.0;
+
+    -fx-padding: 0.333333em 0.667em 0.333333em 0.667em; /* 4 8 4 8 */
+    
+    	-fx-background-radius: 5.0px;
+
+}
+
+.split-menu-button > .arrow-button{
+	-fx-background-color: rgba(225.0,225.0,225.0,0.5);
+	-fx-background-radius: 5.0px;
 }
