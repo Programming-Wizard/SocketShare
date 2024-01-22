@@ -15,6 +15,7 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -37,6 +38,8 @@ public class Main extends Application {
 			root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
+			Image icon = new Image("/logo.png");
+			primaryStage.getIcons().add(icon);
 			primaryStage.show();
 
 			primaryStage.getScene().getAccelerators().put(KeyCombination.keyCombination("CTRL+W"), new Runnable() {
@@ -91,6 +94,8 @@ public class Main extends Application {
 			SendFileStage.setScene(SendFileScene);
 			SendFileStage.setTitle("Send File");
 			SendFileStage.setResizable(false);
+			Image icon = new Image("/logo.png");
+			SendFileStage.getIcons().add(icon);
 			SendFileStage.show();
 			SendFileStage.setOnHidden(event -> {
 				controller.getChooseFileButton().setDisable(false);

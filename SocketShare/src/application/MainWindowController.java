@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -63,11 +64,13 @@ public class MainWindowController implements Initializable {
 			Scene CSWindowScene = new Scene(newroot, Color.TRANSPARENT);
 			CSWindowStage.setScene(CSWindowScene);
 			CSWindowStage.setResizable(false);
+			Image icon = new Image("/logo.png");
+			CSWindowStage.getIcons().add(icon);
 			CSWindowStage.initStyle(StageStyle.TRANSPARENT);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+//		Create and send file button listener on the starting window
 		CreateAndSendButton.setOnAction(event -> {
 			if (SendToIp.isEmpty()) {
 				LabelDisplayer.displayLabel(errorLabel, crossMark, "Select A Server to Send");
@@ -83,6 +86,7 @@ public class MainWindowController implements Initializable {
 			ServerMenu.setText(menuItem2.getText());
 			SendToIp = ip.getXubuntuIP();
 		});
+//		opening the window which takes IP address to other servers 
 		menuItem3.setOnAction(e1 -> {
 			CSWindowStage.show();
 
@@ -104,6 +108,7 @@ public class MainWindowController implements Initializable {
 		});
 	}
 
+//	method to open Create and send file window
 	private void openWritingWindow() {
 		FXMLLoader CreateFileLoader = new FXMLLoader(getClass().getResource("/CreateFileWindow.fxml"));
 		try {
@@ -115,13 +120,15 @@ public class MainWindowController implements Initializable {
 			CreateFileStage.setTitle("Send File");
 			CreateFileStage.setMaximized(true);
 			CreateFileStage.setResizable(true);
+			Image icon = new Image("/logo.png");
+			CreateFileStage.getIcons().add(icon);
 			CreateFileStage.show();
 			CreatefileWindowController controller = CreateFileLoader.getController();
 			CreateFileStage.setOnHidden(event -> {
 				getChooseFileButton().setDisable(false);
 			});
 			CreateFileStage.getScene().getAccelerators().put(KeyCombination.keyCombination("CTRL+W"), new Runnable() {
-				@Override
+				@Override	
 				public void run() {
 					getChooseFileButton().setDisable(false);
 					CreateFileStage.close();
@@ -135,6 +142,8 @@ public class MainWindowController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+//	method which reads the content from the TextArea and sends to the selected server
 
 	private void sendFileToServer(CreatefileWindowController controller) {
 		Task<Void> SendTask = new Task<>() {
@@ -147,7 +156,7 @@ public class MainWindowController implements Initializable {
 					String fileNameRegex = "^[^\\s]+(?:[_-][^\\s]+)*(\\.[^.]+)$";
 					String contentToSend = controller.getFileContent().getText();
 					if (!controller.getFileName().getText().trim().matches(fileNameRegex)
-							|| controller.getFileName().getText().trim().isEmpty() || contentToSend.trim().isEmpty()) {
+							|| controller.getFileName().getText().trim().isEmpty() || contentToSend.trim().isEmpty()) {	
 						LabelDisplayer.displayLabel(controller.errorLabel, controller.crossMark,
 								"Enter File Name correctly");
 						return null;
