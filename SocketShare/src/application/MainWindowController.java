@@ -8,6 +8,7 @@ import java.net.Socket;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ResourceBundle;
+
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,10 +16,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -36,12 +39,21 @@ public class MainWindowController implements Initializable {
 	MenuItem menuItem2;
 	@FXML
 	MenuItem menuItem3;
+	@FXML
+	Text crossMark;
+	@FXML
+	Label errorLabel;
 //	private String ipv4Regex = "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])";
 	IPS ip = new IPS();
 	private String SendToIp = "";
+	labelDisplayer LabelDisplayer = new labelDisplayer();
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		errorLabel.setOpacity(0);
+		crossMark.setOpacity(0);
+		
+		//making and opening Window which takes the IP of other open Servers 
 		FXMLLoader CustomServerWindowLoader = new FXMLLoader(
 				getClass().getResource("/CustomServerSelectionWindow.fxml"));
 		Stage CSWindowStage = new Stage();
@@ -55,8 +67,10 @@ public class MainWindowController implements Initializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		CreateAndSendButton.setOnAction(event -> {
 			if (SendToIp.isEmpty()) {
+				LabelDisplayer.displayLabel(errorLabel, crossMark, "Select A Server to Send");
 				return;
 			}
 			openWritingWindow();
@@ -78,6 +92,11 @@ public class MainWindowController implements Initializable {
 			});
 			controller.getSelectIpButton().setOnAction(event -> {
 				SendToIp = controller.getIpText().getText().trim();
+				if (SendToIp.isEmpty()) {
+					LabelDisplayer.displayLabel(controller.getErrorLabel(), controller.getCrossMark(),
+							"Enter The Ip-Address");
+					return;
+				}
 				System.out.println("sending to ip : " + SendToIp);
 				ServerMenu.setText(SendToIp);
 				CSWindowStage.close();
@@ -129,6 +148,8 @@ public class MainWindowController implements Initializable {
 					String contentToSend = controller.getFileContent().getText();
 					if (!controller.getFileName().getText().trim().matches(fileNameRegex)
 							|| controller.getFileName().getText().trim().isEmpty() || contentToSend.trim().isEmpty()) {
+						LabelDisplayer.displayLabel(controller.errorLabel, controller.crossMark,
+								"Enter File Name correctly");
 						return null;
 					}
 

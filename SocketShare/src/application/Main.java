@@ -25,6 +25,8 @@ public class Main extends Application {
 	String fileName;
 	String filePath;
 
+	labelDisplayer LabelDisplay = new labelDisplayer();
+
 	@Override
 	public void start(Stage primaryStage) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainWindow.fxml"));
@@ -47,10 +49,13 @@ public class Main extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		//Starting Window controller
 		MainWindowController controller = loader.getController();
 		controller.getChooseFileButton().setOnAction(event -> {
 			// Send file from computer button click listener
 			if (controller.getSendToIp().isEmpty()) {
+				controller.LabelDisplayer.displayLabel(controller.errorLabel, controller.crossMark,
+						"Select A Server to Send");
 				return;
 			}
 			openSendFileWindow(controller);
@@ -59,6 +64,7 @@ public class Main extends Application {
 
 	}
 
+	//method to open the file chooser 
 	private void openFileChooserDialogBox(Stage stage, FileChooser fileChooser, FXMLLoader loader) {
 		SendFileWindowController controller = loader.getController();
 		selectedFile = fileChooser.showOpenDialog(stage);
@@ -73,6 +79,7 @@ public class Main extends Application {
 		}
 	}
 
+	//Code to make and open the select file and send window 
 	private void openSendFileWindow(MainWindowController controller) {
 		FXMLLoader SendFileLoader = new FXMLLoader(getClass().getResource("/SendFileWindow.fxml"));
 		FileChooser fileChooser = new FileChooser();
@@ -103,38 +110,37 @@ public class Main extends Application {
 			});
 
 			SendFileController.getSendButton().setOnAction(event -> {
-				sendFileToServer();
+				LabelDisplay.displayLabel(SendFileController.errorLabel, SendFileController.tickMark, "connecting");
+				sendFileToServer(SendFileController, controller);
 			});
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 	}
 
-	private void sendFileToServer() {
+	//code to send the content to server when the send button is clicked
+	private void sendFileToServer(SendFileWindowController controller, MainWindowController mainWindowController) {
 		Task<Void> SendTask = new Task<>() {
 
 			@Override
 			protected Void call() throws Exception {
-				IPS ip = new IPS();
-				String[] serverIPs = { ip.getZorinIP(), ip.getXubuntuIP() };
 				int port = 6961;
-//		        for (String serverIP : serverIPs) {
-				InetSocketAddress serverAddress = new InetSocketAddress(serverIPs[0], port);
+				System.out.println("sned to ip : " + mainWindowController.getSendToIp());
+				InetSocketAddress serverAddress = new InetSocketAddress(mainWindowController.getSendToIp(), port);
 
 				try {
 					File fileToSend = selectedFile;
 					byte[] fileBytes = Files.readAllBytes(fileToSend.toPath());
 					Socket socket = new Socket();
-
+					System.out.println("this is outer try");
 					try {
 						socket.connect(serverAddress);
+						System.out.println("this is inner try");
 					} catch (IOException e) {
+						System.out.println("innner try failed");
 						System.err.println("Failed to connect to " + serverAddress);
 						e.printStackTrace();
-//		                    continue;
 					}
 
-//		                BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 					PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 					output.println(fileName);
 					output.flush();
@@ -143,23 +149,28 @@ public class Main extends Application {
 					outputStream.write(fileBytes);
 					outputStream.flush();
 
+					System.out.println("this wont run if the sending has failed");
+
 					System.out.println("Connected to: " + serverAddress);
 
 					socket.close();
-//		                break;
 				} catch (UnknownHostException e) {
+					System.out.println("this is first catch");
+					LabelDisplay.displayLabel(controller.errorLabel, controller.crossMark,
+							"Couldn't connect Server is Unavailable");
 					e.printStackTrace();
 				} catch (IOException e) {
+					System.out.println("this is second catch");
+					LabelDisplay.displayLabel(controller.errorLabel, controller.crossMark,
+							"Couldn't connect Server is Unavailable");
 					e.printStackTrace();
 				}
-//		        }
 				return null;
 			}
 		};
 		Thread sendTaskThread = new Thread(SendTask);
 		sendTaskThread.start();
-
-//        }
+		LabelDisplay.displayLabel(controller.errorLabel, controller.tickMark, "File Sent to Server");
 	}
 
 	public static void main(String[] args) {
